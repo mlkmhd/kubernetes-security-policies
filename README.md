@@ -106,3 +106,29 @@ FAIL - manifests/statefulset-test-redis-replicas.yaml - main - redis in the Stat
 ```
 
 It's worth noting that even the official `bitnami/redis` may not apply some best practices for certain manifests. So, it's important to exercise caution.
+
+## What are some security best practices?
+There are 20 security best practices based on the CISA Kubernetes hardening document, which can be found in this repository via the provided link (https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/2716980/nsa-cisa-release-kubernetes-hardening-guidance/). 
+
+These best practices include:
+
+- you should not use the `latest` tag in an image address
+- you should not use `Host IPC` for any pod
+- you should not use `Host Network` for any pod
+- you should not use `Host PID` for any pod
+- you should not mount `docker.socket` in any pod
+- you should not use the `SYS_ADMIN CAP` for any pod
+- you should not use `priviledged` mode for any pod
+- you should set memory limit usage for all pods
+- you should set cpu limit usage for all pods
+- you should drop all CAPs from any pod
+- you should enable `read only root file system` for all pods
+- you should enable `allow priviledged scalation` for any pods
+- you should enable running any pod as root use inside the container
+- you should set user id greater than `10000` in any pods
+- you should define `livenessProbe` for all pods
+- you should define `readinessProbe` for all pods
+- you should define a namespace for any pod
+- you should define pod namespace other that `default` namespace
+- you should define `imagePullPolicy` for all pods
+- you should define `imagePullPolicy` equal to `Always`
